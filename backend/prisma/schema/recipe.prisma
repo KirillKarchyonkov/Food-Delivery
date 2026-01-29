@@ -1,0 +1,96 @@
+model Recipe {
+    id String @id @default(cuid())
+
+    title       String
+    description String
+    calories    Int
+    cookingTime Int        @map("cooking_time")
+    difficulty  Difficulty
+
+    author   User   @relation(fields: [authorId], references: [id])
+    authorId String @map("author_id")
+
+    recipeIngredients RecipeIngredient[]
+    recipeSteps       RecipeStep[]
+
+    createdAt DateTime @default(now()) @map("created_at")
+    updatedAt DateTime @updatedAt @map("updated_at")
+
+    comments Comment[]
+    likes    Like[]
+
+    @@map("recipes")
+}
+
+model Ingredient {
+    id String @id @default(cuid())
+
+    name        String
+    defaultUnit Unit   @map("default_unit")
+
+    recipes RecipeIngredient[]
+
+    createdAt DateTime @default(now()) @map("created_at")
+    updatedAt DateTime @updatedAt @map("updated_at")
+
+    @@map("ingredients")
+}
+
+model RecipeIngredient {
+    id String @id @default(cuid())
+
+    name        String
+    iconUrl String @map("icon_url")
+    content     String
+    quantity Decimal
+    unit     Unit
+    price    Decimal
+
+    recipe   Recipe @relation(fields: [recipeId], references: [id])
+    recipeId String @map("recipe_id")
+
+    ingredient   Ingredient @relation(fields: [ingredientId], references: [id])
+    ingredientId String     @map("ingredient_id")
+
+    orderItems OrderItem[]
+
+    createdAt DateTime @default(now()) @map("created_at")
+    updatedAt DateTime @updatedAt @map("updated_at")
+
+    @@unique([recipeId, ingredientId])
+    @@map("recipe_ingredients")
+}
+
+model RecipeStep {
+    id String @id @default(cuid())
+
+    oreder      Int
+    title       String
+    description String
+
+    recipe   Recipe @relation(fields: [recipeId], references: [id])
+    recipeId String @map("recipe_id")
+
+    createdAt DateTime @default(now()) @map("created_at")
+    updatedAt DateTime @updatedAt @map("updated_at")
+
+    @@map("recipe_step")
+}
+
+enum Difficulty {
+    EASY
+    MEDIUM
+    HARD
+}
+
+enum Unit {
+    GRAM
+    KILOGRAM
+    LITER
+    MILLILITER
+    CUP
+    TABLESPOON
+    TEASPOON
+    PIECE
+    CLOVES
+}
