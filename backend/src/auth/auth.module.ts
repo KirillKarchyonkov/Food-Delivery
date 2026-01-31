@@ -6,6 +6,7 @@ import { AuthInput } from "./auth.input";
 import { JwtModule } from "@nestjs/jwt";
 import { ConfigModule, ConfigService } from "@nestjs/config";
 import { getJwtConfig } from "src/config/jwt.config";
+import { UsersService } from "src/users/users.service";
 
 @Module({
   imports: [
@@ -14,8 +15,8 @@ import { getJwtConfig } from "src/config/jwt.config";
       imports: [ConfigModule],
       inject: [ConfigService],
       useFactory: getJwtConfig,
-    }),
+    })
   ],
-  providers: [AuthService, AuthResolver, AuthInput],
+  providers: [AuthService, AuthResolver, AuthInput, UsersService],
 })
 export class AuthModule {}

@@ -1,17 +1,21 @@
-import { BadRequestException, Injectable } from "@nestjs/common";
+import { Response } from 'express';
+import { BadRequestException, Injectable, NotFoundException } from "@nestjs/common";
 import { ConfigService } from "@nestjs/config";
 import { JwtService } from "@nestjs/jwt";
 import { PrismaService } from "src/prisma/prisma.service";
 import { AuthInput } from "./auth.input";
-import { hash } from "argon2";
+import { hash, verify } from "argon2";
 import { IAuthTokenData } from "./auth.interface";
+import { UsersService } from "src/users/users.service";
+import { isDev } from 'src/utils/is-dev.util';
 
 @Injectable()
 export class AuthService {
     constructor(
         private prisma: PrismaService,
         private configService: ConfigService,
-        private jwt: JwtService
+        private jwt: JwtService,
+        private usersService: UsersService
     ) { }
 
     private EXPIRE_DAY_REFRESH_TOKEN = 3;
@@ -52,20 +56,67 @@ export class AuthService {
         }
     }
 
+    async login(input: AuthInput) {
+        const user = await this.validateUser(input)
+
+        const tokens = this.generateTokens({
+            id: user.id,
+            role: user.role
+        })
+
+        return { user, ...tokens }
+    }
+
+    private async validateUser(input: AuthInput) {
+        const email = input.email
+
+        const user = await this.usersService.findByEmail(email)
+
+        if (!user) {
+            throw new NotFoundException('Неверный email или пароль')
+        }
+
+        const isPasswordValid = await verify(user.password, input.password)
+
+        if (!isPasswordValid) {
+            throw new NotFoundException('Неверный email или пароль')
+        }
+
+        return user
+    }
+
     private generateTokens(data: IAuthTokenData) {
         const accessToken = this.jwt.sign(data, {
             expiresIn: '1h'
         })
 
-        const refreshToken = this.jwt.sign({
-            id: data.id
-        }, {
-            expiresIn: `${this.EXPIRE_DAY_REFRESH_TOKEN}d`
-        })
+        const refreshToken = this.jwt.sign(
+            {
+                id: data.id
+            },
+            {
+                expiresIn: `${this.EXPIRE_DAY_REFRESH_TOKEN}d`
+            })
 
         return {
             accessToken,
             refreshToken
         }
+    }
+
+    toggleRefreshToken(response: Response, token: string | null) {
+
+        const isRemoveCookie = !token;
+        const expiresIn = isRemoveCookie
+            ? new Date()
+            : new Date(Date.now() + 1000 * 60 * 60 * 24 * this.EXPIRE_DAY_REFRESH_TOKEN);
+
+        response.cookie(this.REFRESH_TOKEN_NAME, token || '', {
+            httpOnly: true,
+            domain: this.configService.get<string>('COOKIE_DOMAIN'),
+            expires: expiresIn,
+            sameSite: isDev(this.configService) ? 'none' : 'strict',
+            secure: true
+        });
     }
 }
