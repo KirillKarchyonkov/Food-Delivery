@@ -1,7 +1,13 @@
-import { Request, Response } from "express";    
+import { Request, Response } from "express"; 
+
+interface IRequestWithCookies extends Request {
+    cookies: Record<string, string | undefined>
+}
+
 export interface IGqlContext {
-    res: Response,
-    req: Request, 
+    req: IRequestWithCookies;
+    res: Response;
+    
 }
 
 

@@ -67,6 +67,24 @@ export class AuthService {
         return { user, ...tokens }
     }
 
+    async getNewTokens(refreshToken: string) {
+        const result = await this.jwt.verifyAsync<Pick<IAuthTokenData, 'id'>>(refreshToken)
+        if (!result) throw new BadRequestException('Неверный refresh токен')
+
+        const user = await this.usersService.findById(result.id)
+
+        if (!user) {
+            throw new NotFoundException('Пользователя не существует')
+        }
+
+        const tokens = this.generateTokens({
+            id: user.id,
+            role: user.role
+        })
+
+        return { user, ...tokens}
+    } 
+
     private async validateUser(input: AuthInput) {
         const email = input.email
 
@@ -104,7 +122,7 @@ export class AuthService {
         }
     }
 
-    toggleRefreshToken(response: Response, token: string | null) {
+    toggleRefreshTokenCookie(response: Response, token: string | null) {
 
         const isRemoveCookie = !token;
         const expiresIn = isRemoveCookie
