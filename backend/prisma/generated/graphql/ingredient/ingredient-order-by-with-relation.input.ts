@@ -22,5 +22,5 @@ export class IngredientOrderByWithRelationInput {
     updatedAt?: `${SortOrder}`;
 
     @Field(() => RecipeIngredientOrderByRelationAggregateInput, {nullable:true})
-    recipes?: RecipeIngredientOrderByRelationAggregateInput;
+    recipesIngredient?: RecipeIngredientOrderByRelationAggregateInput;
 }

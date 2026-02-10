@@ -22,5 +22,5 @@ export class IngredientUncheckedUpdateInput {
     updatedAt?: Date | string;
 
     @Field(() => RecipeIngredientUncheckedUpdateManyWithoutIngredientNestedInput, {nullable:true})
-    recipes?: RecipeIngredientUncheckedUpdateManyWithoutIngredientNestedInput;
+    recipesIngredient?: RecipeIngredientUncheckedUpdateManyWithoutIngredientNestedInput;
 }
