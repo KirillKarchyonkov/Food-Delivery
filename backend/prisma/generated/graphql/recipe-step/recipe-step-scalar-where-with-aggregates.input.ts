@@ -20,7 +20,7 @@ export class RecipeStepScalarWhereWithAggregatesInput {
     id?: StringWithAggregatesFilter;
 
     @Field(() => IntWithAggregatesFilter, {nullable:true})
-    oreder?: IntWithAggregatesFilter;
+    order?: IntWithAggregatesFilter;
 
     @Field(() => StringWithAggregatesFilter, {nullable:true})
     title?: StringWithAggregatesFilter;

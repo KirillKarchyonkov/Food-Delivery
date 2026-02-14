@@ -21,7 +21,7 @@ export class RecipeStepWhereInput {
     id?: StringFilter;
 
     @Field(() => IntFilter, {nullable:true})
-    oreder?: IntFilter;
+    order?: IntFilter;
 
     @Field(() => StringFilter, {nullable:true})
     title?: StringFilter;

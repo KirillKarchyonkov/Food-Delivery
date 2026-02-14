@@ -1594,7 +1594,7 @@ export type RecipeIngredientScalarFieldEnum = (typeof RecipeIngredientScalarFiel
 
 export const RecipeStepScalarFieldEnum = {
   id: 'id',
-  oreder: 'oreder',
+  order: 'order',
   title: 'title',
   description: 'description',
   recipeId: 'recipeId',

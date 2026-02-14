@@ -1,16 +1,10 @@
-import { Field, registerEnumType } from '@nestjs/graphql';
+import { Field, ID } from '@nestjs/graphql';
 import { InputType } from '@nestjs/graphql';
 import { Int } from '@nestjs/graphql';
 import { NutritionFactUpdateInput } from './nutrition-fact.input';
+import { RecipeStepInput } from './step.inputs';
+import { Difficulty } from '../recipe.enum';
 
-
-export enum Difficulty {
-    EASY = "EASY",
-    MEDIUM = "MEDIUM",
-    HARD = "HARD"
-}
-
-registerEnumType(Difficulty, { name: 'Difficulty', description: undefined })
 
 @InputType()
 export class RecipeCreateInput {
@@ -40,20 +34,15 @@ export class RecipeCreateInput {
     updatedAt?: Date | string;
 
     @Field(() => NutritionFactUpdateInput, {nullable:true})
-    nutritionInfos?: NutritionFactUpdateInput;
+    nutritionFact?: NutritionFactUpdateInput;
 
     @Field(() => String, {nullable:true})
     tags?: string[];
 
-    @Field(() => RecipeStepCreateNestedManyWithoutRecipeInput, {nullable:true})
-    recipeSteps?: RecipeStepCreateNestedManyWithoutRecipeInput;
+    @Field(() => [RecipeStepInput], {nullable:true})
+    recipeSteps?: RecipeStepInput[];
 
-    @Field(() => RecipeIngredientCreateNestedManyWithoutRecipeInput, {nullable:true})
-    recipeIngredients?: RecipeIngredientCreateNestedManyWithoutRecipeInput;
+    @Field(() => [ID], {nullable:true})
+    ingredientIds?: string[];
 
-    @Field(() => LikeCreateNestedManyWithoutRecipeInput, {nullable:true})
-    likes?: LikeCreateNestedManyWithoutRecipeInput;
-
-    @Field(() => CommentCreateNestedManyWithoutRecipeInput, {nullable:true})
-    comments?: CommentCreateNestedManyWithoutRecipeInput;
 }

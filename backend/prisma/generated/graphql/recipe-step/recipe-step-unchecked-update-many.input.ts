@@ -9,7 +9,7 @@ export class RecipeStepUncheckedUpdateManyInput {
     id?: string;
 
     @Field(() => Int, {nullable:true})
-    oreder?: number;
+    order?: number;
 
     @Field(() => String, {nullable:true})
     title?: string;

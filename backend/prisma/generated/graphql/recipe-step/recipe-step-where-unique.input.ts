@@ -22,7 +22,7 @@ export class RecipeStepWhereUniqueInput {
     NOT?: Array<RecipeStepWhereInput>;
 
     @Field(() => IntFilter, {nullable:true})
-    oreder?: IntFilter;
+    order?: IntFilter;
 
     @Field(() => StringFilter, {nullable:true})
     title?: StringFilter;

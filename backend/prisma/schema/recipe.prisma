@@ -50,7 +50,7 @@ model RecipeIngredient {
 model RecipeStep {
     id String @id @default(cuid())
 
-    oreder      Int
+    order      Int
     title       String
     description String
 

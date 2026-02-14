@@ -8,7 +8,7 @@ export class RecipeStepMinAggregateInput {
     id?: true;
 
     @Field(() => Boolean, {nullable:true})
-    oreder?: true;
+    order?: true;
 
     @Field(() => Boolean, {nullable:true})
     title?: true;

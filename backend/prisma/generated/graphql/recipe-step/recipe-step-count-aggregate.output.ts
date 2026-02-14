@@ -9,7 +9,7 @@ export class RecipeStepCountAggregate {
     id!: number;
 
     @Field(() => Int, {nullable:false})
-    oreder!: number;
+    order!: number;
 
     @Field(() => Int, {nullable:false})
     title!: number;

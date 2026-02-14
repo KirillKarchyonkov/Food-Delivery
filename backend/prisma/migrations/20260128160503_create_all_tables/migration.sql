@@ -120,7 +120,7 @@ CREATE TABLE "recipe_ingredients" (
 -- CreateTable
 CREATE TABLE "recipe_step" (
     "id" TEXT NOT NULL,
-    "oreder" INTEGER NOT NULL,
+    "order" INTEGER NOT NULL,
     "title" TEXT NOT NULL,
     "description" TEXT NOT NULL,
     "recipe_id" TEXT NOT NULL,

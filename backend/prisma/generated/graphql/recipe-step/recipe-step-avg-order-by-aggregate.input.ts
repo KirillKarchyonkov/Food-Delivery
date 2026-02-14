@@ -6,5 +6,5 @@ import { SortOrder } from '../prisma/sort-order.enum';
 export class RecipeStepAvgOrderByAggregateInput {
 
     @Field(() => SortOrder, {nullable:true})
-    oreder?: `${SortOrder}`;
+    order?: `${SortOrder}`;
 }

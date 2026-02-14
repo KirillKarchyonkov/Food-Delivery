@@ -2,7 +2,7 @@ import { registerEnumType } from '@nestjs/graphql';
 
 export enum RecipeStepScalarFieldEnum {
     id = "id",
-    oreder = "oreder",
+    order = "order",
     title = "title",
     description = "description",
     recipeId = "recipeId",

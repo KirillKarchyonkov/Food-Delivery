@@ -9,7 +9,7 @@ export class RecipeStepCreateManyRecipeInput {
     id?: string;
 
     @Field(() => Int, {nullable:false})
-    oreder!: number;
+    order!: number;
 
     @Field(() => String, {nullable:false})
     title!: string;

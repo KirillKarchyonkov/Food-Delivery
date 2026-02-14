@@ -10,7 +10,7 @@ export class RecipeStepOrderByWithRelationInput {
     id?: `${SortOrder}`;
 
     @Field(() => SortOrder, {nullable:true})
-    oreder?: `${SortOrder}`;
+    order?: `${SortOrder}`;
 
     @Field(() => SortOrder, {nullable:true})
     title?: `${SortOrder}`;

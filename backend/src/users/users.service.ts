@@ -52,8 +52,6 @@ export class UsersService {
             }
         } : {}
 
-        console.log('password', password)
-
         const updateMeasurements: Prisma.XOR<
             Prisma.UserUpdateInput,
             Prisma.UserUncheckedUpdateInput

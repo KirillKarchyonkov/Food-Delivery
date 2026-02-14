@@ -5,5 +5,5 @@ import { InputType } from '@nestjs/graphql';
 export class RecipeStepSumAggregateInput {
 
     @Field(() => Boolean, {nullable:true})
-    oreder?: true;
+    order?: true;
 }

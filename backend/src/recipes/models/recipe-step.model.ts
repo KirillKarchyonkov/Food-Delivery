@@ -1,11 +1,7 @@
-import { Field } from '@nestjs/graphql';
-import { ObjectType } from '@nestjs/graphql';
-import { ID } from '@nestjs/graphql';
-import { Int } from '@nestjs/graphql';
-import { Recipe } from '../recipe/recipe.model';
+import { Field, ID, Int, ObjectType } from '@nestjs/graphql';
 
 @ObjectType()
-export class RecipeStep {
+export class RecipeStepModel {
 
     @Field(() => ID, {nullable:false})
     id!: string;
@@ -27,7 +23,4 @@ export class RecipeStep {
 
     @Field(() => Date, {nullable:false})
     updatedAt!: Date;
-
-    @Field(() => Recipe, {nullable:false})
-    recipe?: Recipe;
 }
