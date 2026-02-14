@@ -5,10 +5,12 @@ import { IntFilter } from '../prisma/int-filter.input';
 import { EnumDifficultyFilter } from '../prisma/enum-difficulty-filter.input';
 import { DateTimeFilter } from '../prisma/date-time-filter.input';
 import { UserScalarRelationFilter } from '../user/user-scalar-relation-filter.input';
-import { RecipeIngredientListRelationFilter } from '../recipe-ingredient/recipe-ingredient-list-relation-filter.input';
+import { NutritionFactScalarRelationFilter } from '../nutrition-fact/nutrition-fact-scalar-relation-filter.input';
+import { RecipeTagListRelationFilter } from '../recipe-tag/recipe-tag-list-relation-filter.input';
 import { RecipeStepListRelationFilter } from '../recipe-step/recipe-step-list-relation-filter.input';
-import { CommentListRelationFilter } from '../comment/comment-list-relation-filter.input';
+import { RecipeIngredientListRelationFilter } from '../recipe-ingredient/recipe-ingredient-list-relation-filter.input';
 import { LikeListRelationFilter } from '../like/like-list-relation-filter.input';
+import { CommentListRelationFilter } from '../comment/comment-list-relation-filter.input';
 
 @InputType()
 export class RecipeWhereInput {
@@ -24,6 +26,9 @@ export class RecipeWhereInput {
 
     @Field(() => StringFilter, {nullable:true})
     id?: StringFilter;
+
+    @Field(() => StringFilter, {nullable:true})
+    slug?: StringFilter;
 
     @Field(() => StringFilter, {nullable:true})
     title?: StringFilter;
@@ -52,15 +57,21 @@ export class RecipeWhereInput {
     @Field(() => UserScalarRelationFilter, {nullable:true})
     author?: UserScalarRelationFilter;
 
-    @Field(() => RecipeIngredientListRelationFilter, {nullable:true})
-    recipeIngredients?: RecipeIngredientListRelationFilter;
+    @Field(() => NutritionFactScalarRelationFilter, {nullable:true})
+    nutritionInfos?: NutritionFactScalarRelationFilter;
+
+    @Field(() => RecipeTagListRelationFilter, {nullable:true})
+    tags?: RecipeTagListRelationFilter;
 
     @Field(() => RecipeStepListRelationFilter, {nullable:true})
     recipeSteps?: RecipeStepListRelationFilter;
 
-    @Field(() => CommentListRelationFilter, {nullable:true})
-    comments?: CommentListRelationFilter;
+    @Field(() => RecipeIngredientListRelationFilter, {nullable:true})
+    recipeIngredients?: RecipeIngredientListRelationFilter;
 
     @Field(() => LikeListRelationFilter, {nullable:true})
     likes?: LikeListRelationFilter;
+
+    @Field(() => CommentListRelationFilter, {nullable:true})
+    comments?: CommentListRelationFilter;
 }

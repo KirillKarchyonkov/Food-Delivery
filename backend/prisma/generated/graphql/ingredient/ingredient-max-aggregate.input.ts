@@ -11,7 +11,10 @@ export class IngredientMaxAggregateInput {
     name?: true;
 
     @Field(() => Boolean, {nullable:true})
-    defaultUnit?: true;
+    iconUrl?: true;
+
+    @Field(() => Boolean, {nullable:true})
+    content?: true;
 
     @Field(() => Boolean, {nullable:true})
     createdAt?: true;

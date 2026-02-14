@@ -11,6 +11,9 @@ export class OrderItemMaxAggregateInput {
     quantity?: true;
 
     @Field(() => Boolean, {nullable:true})
+    price?: true;
+
+    @Field(() => Boolean, {nullable:true})
     recipeIngredientId?: true;
 
     @Field(() => Boolean, {nullable:true})

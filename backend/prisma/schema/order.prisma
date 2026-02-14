@@ -16,7 +16,8 @@ model Order {
 model OrderItem {
     id String @id @default(cuid())
 
-    quantity Int? @default(1)
+    quantity Decimal? @default(1)
+    price    Decimal
 
     recipeIngredient   RecipeIngredient @relation(fields: [recipeIngredientId], references: [id])
     recipeIngredientId String           @map("recipe_ingredient_id")

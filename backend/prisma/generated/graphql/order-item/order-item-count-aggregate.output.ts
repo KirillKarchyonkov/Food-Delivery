@@ -12,6 +12,9 @@ export class OrderItemCountAggregate {
     quantity!: number;
 
     @Field(() => Int, {nullable:false})
+    price!: number;
+
+    @Field(() => Int, {nullable:false})
     recipeIngredientId!: number;
 
     @Field(() => Int, {nullable:false})

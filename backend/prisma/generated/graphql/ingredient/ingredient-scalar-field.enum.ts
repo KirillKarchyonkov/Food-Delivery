@@ -3,7 +3,8 @@ import { registerEnumType } from '@nestjs/graphql';
 export enum IngredientScalarFieldEnum {
     id = "id",
     name = "name",
-    defaultUnit = "defaultUnit",
+    iconUrl = "iconUrl",
+    content = "content",
     createdAt = "createdAt",
     updatedAt = "updatedAt"
 }

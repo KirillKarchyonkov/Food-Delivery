@@ -2,15 +2,20 @@ import { Field } from '@nestjs/graphql';
 import { InputType } from '@nestjs/graphql';
 import { Int } from '@nestjs/graphql';
 import { Difficulty } from '../prisma/difficulty.enum';
+import { NutritionFactUncheckedUpdateOneWithoutRecipeNestedInput } from '../nutrition-fact/nutrition-fact-unchecked-update-one-without-recipe-nested.input';
+import { RecipeTagUncheckedUpdateManyWithoutRecipesNestedInput } from '../recipe-tag/recipe-tag-unchecked-update-many-without-recipes-nested.input';
 import { RecipeStepUncheckedUpdateManyWithoutRecipeNestedInput } from '../recipe-step/recipe-step-unchecked-update-many-without-recipe-nested.input';
-import { CommentUncheckedUpdateManyWithoutRecipeNestedInput } from '../comment/comment-unchecked-update-many-without-recipe-nested.input';
 import { LikeUncheckedUpdateManyWithoutRecipeNestedInput } from '../like/like-unchecked-update-many-without-recipe-nested.input';
+import { CommentUncheckedUpdateManyWithoutRecipeNestedInput } from '../comment/comment-unchecked-update-many-without-recipe-nested.input';
 
 @InputType()
 export class RecipeUncheckedUpdateWithoutRecipeIngredientsInput {
 
     @Field(() => String, {nullable:true})
     id?: string;
+
+    @Field(() => String, {nullable:true})
+    slug?: string;
 
     @Field(() => String, {nullable:true})
     title?: string;
@@ -36,12 +41,18 @@ export class RecipeUncheckedUpdateWithoutRecipeIngredientsInput {
     @Field(() => Date, {nullable:true})
     updatedAt?: Date | string;
 
+    @Field(() => NutritionFactUncheckedUpdateOneWithoutRecipeNestedInput, {nullable:true})
+    nutritionInfos?: NutritionFactUncheckedUpdateOneWithoutRecipeNestedInput;
+
+    @Field(() => RecipeTagUncheckedUpdateManyWithoutRecipesNestedInput, {nullable:true})
+    tags?: RecipeTagUncheckedUpdateManyWithoutRecipesNestedInput;
+
     @Field(() => RecipeStepUncheckedUpdateManyWithoutRecipeNestedInput, {nullable:true})
     recipeSteps?: RecipeStepUncheckedUpdateManyWithoutRecipeNestedInput;
 
-    @Field(() => CommentUncheckedUpdateManyWithoutRecipeNestedInput, {nullable:true})
-    comments?: CommentUncheckedUpdateManyWithoutRecipeNestedInput;
-
     @Field(() => LikeUncheckedUpdateManyWithoutRecipeNestedInput, {nullable:true})
     likes?: LikeUncheckedUpdateManyWithoutRecipeNestedInput;
+
+    @Field(() => CommentUncheckedUpdateManyWithoutRecipeNestedInput, {nullable:true})
+    comments?: CommentUncheckedUpdateManyWithoutRecipeNestedInput;
 }

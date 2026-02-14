@@ -18,6 +18,9 @@ export class OrderItemOrderByWithAggregationInput {
     quantity?: SortOrderInput;
 
     @Field(() => SortOrder, {nullable:true})
+    price?: `${SortOrder}`;
+
+    @Field(() => SortOrder, {nullable:true})
     recipeIngredientId?: `${SortOrder}`;
 
     @Field(() => SortOrder, {nullable:true})

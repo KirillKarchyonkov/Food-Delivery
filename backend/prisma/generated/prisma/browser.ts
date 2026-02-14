@@ -18,6 +18,11 @@ export { Prisma }
 export * as $Enums from './enums.js'
 export * from './enums.js';
 /**
+ * Model Ingredient
+ * 
+ */
+export type Ingredient = Prisma.IngredientModel
+/**
  * Model Order
  * 
  */
@@ -48,11 +53,6 @@ export type Like = Prisma.LikeModel
  */
 export type Recipe = Prisma.RecipeModel
 /**
- * Model Ingredient
- * 
- */
-export type Ingredient = Prisma.IngredientModel
-/**
  * Model RecipeIngredient
  * 
  */
@@ -62,6 +62,16 @@ export type RecipeIngredient = Prisma.RecipeIngredientModel
  * 
  */
 export type RecipeStep = Prisma.RecipeStepModel
+/**
+ * Model NutritionFact
+ * 
+ */
+export type NutritionFact = Prisma.NutritionFactModel
+/**
+ * Model RecipeTag
+ * 
+ */
+export type RecipeTag = Prisma.RecipeTagModel
 /**
  * Model User
  * 

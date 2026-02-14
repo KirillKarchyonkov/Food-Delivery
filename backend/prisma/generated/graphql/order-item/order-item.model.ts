@@ -14,6 +14,9 @@ export class OrderItem {
     quantity!: number | null;
 
     @Field(() => String, {nullable:false})
+    price!: string;
+
+    @Field(() => String, {nullable:false})
     recipeIngredientId!: string;
 
     @Field(() => Date, {nullable:false})

@@ -12,6 +12,9 @@ export class OrderItemUncheckedUpdateManyInput {
     quantity?: number;
 
     @Field(() => String, {nullable:true})
+    price?: string;
+
+    @Field(() => String, {nullable:true})
     recipeIngredientId?: string;
 
     @Field(() => Date, {nullable:true})

@@ -25,6 +25,9 @@ export class OrderItemWhereUniqueInput {
     quantity?: IntFilter;
 
     @Field(() => StringFilter, {nullable:true})
+    price?: StringFilter;
+
+    @Field(() => StringFilter, {nullable:true})
     recipeIngredientId?: StringFilter;
 
     @Field(() => DateTimeFilter, {nullable:true})

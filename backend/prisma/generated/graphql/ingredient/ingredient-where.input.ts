@@ -1,7 +1,6 @@
 import { Field } from '@nestjs/graphql';
 import { InputType } from '@nestjs/graphql';
 import { StringFilter } from '../prisma/string-filter.input';
-import { EnumUnitFilter } from '../prisma/enum-unit-filter.input';
 import { DateTimeFilter } from '../prisma/date-time-filter.input';
 import { RecipeIngredientListRelationFilter } from '../recipe-ingredient/recipe-ingredient-list-relation-filter.input';
 
@@ -23,8 +22,11 @@ export class IngredientWhereInput {
     @Field(() => StringFilter, {nullable:true})
     name?: StringFilter;
 
-    @Field(() => EnumUnitFilter, {nullable:true})
-    defaultUnit?: EnumUnitFilter;
+    @Field(() => StringFilter, {nullable:true})
+    iconUrl?: StringFilter;
+
+    @Field(() => StringFilter, {nullable:true})
+    content?: StringFilter;
 
     @Field(() => DateTimeFilter, {nullable:true})
     createdAt?: DateTimeFilter;
