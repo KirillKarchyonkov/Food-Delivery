@@ -13,7 +13,7 @@ export class OrderUpdateInput {
     orderId?: string;
 
     @Field(() => OrderStatus, {nullable:true})
-    stsatus?: `${OrderStatus}`;
+    status?: `${OrderStatus}`;
 
     @Field(() => Date, {nullable:true})
     createdAt?: Date | string;

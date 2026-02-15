@@ -15,7 +15,7 @@ export class OrderOrderByWithAggregationInput {
     orderId?: `${SortOrder}`;
 
     @Field(() => SortOrder, {nullable:true})
-    stsatus?: `${SortOrder}`;
+    status?: `${SortOrder}`;
 
     @Field(() => SortOrder, {nullable:true})
     userId?: `${SortOrder}`;

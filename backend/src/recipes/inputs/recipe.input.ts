@@ -1,6 +1,4 @@
-import { Field, ID } from '@nestjs/graphql';
-import { InputType } from '@nestjs/graphql';
-import { Int } from '@nestjs/graphql';
+import { Field, ID, InputType, Int } from '@nestjs/graphql';
 import { NutritionFactUpdateInput } from './nutrition-fact.input';
 import { RecipeStepInput } from './step.inputs';
 import { Difficulty } from '../recipe.enum';

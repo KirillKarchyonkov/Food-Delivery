@@ -11,7 +11,7 @@ export class OrderCountAggregateInput {
     orderId?: true;
 
     @Field(() => Boolean, {nullable:true})
-    stsatus?: true;
+    status?: true;
 
     @Field(() => Boolean, {nullable:true})
     userId?: true;

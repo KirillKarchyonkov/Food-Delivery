@@ -25,7 +25,7 @@ export class OrderWhereUniqueInput {
     NOT?: Array<OrderWhereInput>;
 
     @Field(() => EnumOrderStatusFilter, {nullable:true})
-    stsatus?: EnumOrderStatusFilter;
+    status?: EnumOrderStatusFilter;
 
     @Field(() => StringFilter, {nullable:true})
     userId?: StringFilter;

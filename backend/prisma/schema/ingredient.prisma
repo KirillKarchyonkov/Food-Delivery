@@ -1,9 +1,10 @@
 model Ingredient {
     id String @id @default(cuid())
 
-    name        String
-    iconUrl     String @map("icon_url")
-    content     String
+    name    String
+    iconUrl String  @map("icon_url")
+    content String
+    price   Decimal
 
     recipesIngredient RecipeIngredient[]
 

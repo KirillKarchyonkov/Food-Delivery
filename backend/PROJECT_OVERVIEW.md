@@ -301,7 +301,7 @@ PIECE, CLOVES             // Штуки
 model Order {
     id      String @id @default(cuid())
     orderId String @unique @map("order_id")  // Публичный ID заказа (например для отслеживания)
-    stsatus OrderStatus @default(PENDING)     // (Примечание: возможно опечатка - status)
+    status OrderStatus @default(PENDING)     // (Примечание: возможно опечатка - status)
     
     user    User @relation(fields: [userId], references: [id])
     userId  String @map("user_id")

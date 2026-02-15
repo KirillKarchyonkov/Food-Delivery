@@ -88,6 +88,7 @@ export const IngredientScalarFieldEnum = {
   name: 'name',
   iconUrl: 'iconUrl',
   content: 'content',
+  price: 'price',
   createdAt: 'createdAt',
   updatedAt: 'updatedAt'
 } as const
@@ -98,7 +99,8 @@ export type IngredientScalarFieldEnum = (typeof IngredientScalarFieldEnum)[keyof
 export const OrderScalarFieldEnum = {
   id: 'id',
   orderId: 'orderId',
-  stsatus: 'stsatus',
+  status: 'status',
+  total: 'total',
   userId: 'userId',
   createdAt: 'createdAt',
   updatedAt: 'updatedAt'
@@ -109,9 +111,10 @@ export type OrderScalarFieldEnum = (typeof OrderScalarFieldEnum)[keyof typeof Or
 
 export const OrderItemScalarFieldEnum = {
   id: 'id',
+  recipeIngredientId: 'recipeIngredientId',
   quantity: 'quantity',
   price: 'price',
-  recipeIngredientId: 'recipeIngredientId',
+  orderId: 'orderId',
   createdAt: 'createdAt',
   updatedAt: 'updatedAt'
 } as const
@@ -144,7 +147,6 @@ export type CommentScalarFieldEnum = (typeof CommentScalarFieldEnum)[keyof typeo
 
 export const LikeScalarFieldEnum = {
   id: 'id',
-  content: 'content',
   recipeId: 'recipeId',
   userId: 'userId',
   createdAt: 'createdAt',

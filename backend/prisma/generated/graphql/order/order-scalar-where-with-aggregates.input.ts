@@ -23,7 +23,7 @@ export class OrderScalarWhereWithAggregatesInput {
     orderId?: StringWithAggregatesFilter;
 
     @Field(() => EnumOrderStatusWithAggregatesFilter, {nullable:true})
-    stsatus?: EnumOrderStatusWithAggregatesFilter;
+    status?: EnumOrderStatusWithAggregatesFilter;
 
     @Field(() => StringWithAggregatesFilter, {nullable:true})
     userId?: StringWithAggregatesFilter;

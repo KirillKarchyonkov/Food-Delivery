@@ -15,7 +15,7 @@ export class OrderGroupBy {
     orderId!: string;
 
     @Field(() => OrderStatus, {nullable:false})
-    stsatus!: `${OrderStatus}`;
+    status!: `${OrderStatus}`;
 
     @Field(() => String, {nullable:false})
     userId!: string;

@@ -12,7 +12,7 @@ export class OrderCountAggregate {
     orderId!: number;
 
     @Field(() => Int, {nullable:false})
-    stsatus!: number;
+    status!: number;
 
     @Field(() => Int, {nullable:false})
     userId!: number;

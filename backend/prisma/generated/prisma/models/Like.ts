@@ -26,7 +26,6 @@ export type AggregateLike = {
 
 export type LikeMinAggregateOutputType = {
   id: string | null
-  content: string | null
   recipeId: string | null
   userId: string | null
   createdAt: Date | null
@@ -35,7 +34,6 @@ export type LikeMinAggregateOutputType = {
 
 export type LikeMaxAggregateOutputType = {
   id: string | null
-  content: string | null
   recipeId: string | null
   userId: string | null
   createdAt: Date | null
@@ -44,7 +42,6 @@ export type LikeMaxAggregateOutputType = {
 
 export type LikeCountAggregateOutputType = {
   id: number
-  content: number
   recipeId: number
   userId: number
   createdAt: number
@@ -55,7 +52,6 @@ export type LikeCountAggregateOutputType = {
 
 export type LikeMinAggregateInputType = {
   id?: true
-  content?: true
   recipeId?: true
   userId?: true
   createdAt?: true
@@ -64,7 +60,6 @@ export type LikeMinAggregateInputType = {
 
 export type LikeMaxAggregateInputType = {
   id?: true
-  content?: true
   recipeId?: true
   userId?: true
   createdAt?: true
@@ -73,7 +68,6 @@ export type LikeMaxAggregateInputType = {
 
 export type LikeCountAggregateInputType = {
   id?: true
-  content?: true
   recipeId?: true
   userId?: true
   createdAt?: true
@@ -155,7 +149,6 @@ export type LikeGroupByArgs<ExtArgs extends runtime.Types.Extensions.InternalArg
 
 export type LikeGroupByOutputType = {
   id: string
-  content: string
   recipeId: string
   userId: string
   createdAt: Date
@@ -185,24 +178,22 @@ export type LikeWhereInput = {
   OR?: Prisma.LikeWhereInput[]
   NOT?: Prisma.LikeWhereInput | Prisma.LikeWhereInput[]
   id?: Prisma.StringFilter<"Like"> | string
-  content?: Prisma.StringFilter<"Like"> | string
   recipeId?: Prisma.StringFilter<"Like"> | string
   userId?: Prisma.StringFilter<"Like"> | string
   createdAt?: Prisma.DateTimeFilter<"Like"> | Date | string
   updatedAt?: Prisma.DateTimeFilter<"Like"> | Date | string
   recipe?: Prisma.XOR<Prisma.RecipeScalarRelationFilter, Prisma.RecipeWhereInput>
-  author?: Prisma.XOR<Prisma.UserScalarRelationFilter, Prisma.UserWhereInput>
+  user?: Prisma.XOR<Prisma.UserScalarRelationFilter, Prisma.UserWhereInput>
 }
 
 export type LikeOrderByWithRelationInput = {
   id?: Prisma.SortOrder
-  content?: Prisma.SortOrder
   recipeId?: Prisma.SortOrder
   userId?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
   recipe?: Prisma.RecipeOrderByWithRelationInput
-  author?: Prisma.UserOrderByWithRelationInput
+  user?: Prisma.UserOrderByWithRelationInput
 }
 
 export type LikeWhereUniqueInput = Prisma.AtLeast<{
@@ -211,18 +202,16 @@ export type LikeWhereUniqueInput = Prisma.AtLeast<{
   AND?: Prisma.LikeWhereInput | Prisma.LikeWhereInput[]
   OR?: Prisma.LikeWhereInput[]
   NOT?: Prisma.LikeWhereInput | Prisma.LikeWhereInput[]
-  content?: Prisma.StringFilter<"Like"> | string
   recipeId?: Prisma.StringFilter<"Like"> | string
   userId?: Prisma.StringFilter<"Like"> | string
   createdAt?: Prisma.DateTimeFilter<"Like"> | Date | string
   updatedAt?: Prisma.DateTimeFilter<"Like"> | Date | string
   recipe?: Prisma.XOR<Prisma.RecipeScalarRelationFilter, Prisma.RecipeWhereInput>
-  author?: Prisma.XOR<Prisma.UserScalarRelationFilter, Prisma.UserWhereInput>
+  user?: Prisma.XOR<Prisma.UserScalarRelationFilter, Prisma.UserWhereInput>
 }, "id" | "recipeId_userId">
 
 export type LikeOrderByWithAggregationInput = {
   id?: Prisma.SortOrder
-  content?: Prisma.SortOrder
   recipeId?: Prisma.SortOrder
   userId?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
@@ -237,7 +226,6 @@ export type LikeScalarWhereWithAggregatesInput = {
   OR?: Prisma.LikeScalarWhereWithAggregatesInput[]
   NOT?: Prisma.LikeScalarWhereWithAggregatesInput | Prisma.LikeScalarWhereWithAggregatesInput[]
   id?: Prisma.StringWithAggregatesFilter<"Like"> | string
-  content?: Prisma.StringWithAggregatesFilter<"Like"> | string
   recipeId?: Prisma.StringWithAggregatesFilter<"Like"> | string
   userId?: Prisma.StringWithAggregatesFilter<"Like"> | string
   createdAt?: Prisma.DateTimeWithAggregatesFilter<"Like"> | Date | string
@@ -246,16 +234,14 @@ export type LikeScalarWhereWithAggregatesInput = {
 
 export type LikeCreateInput = {
   id?: string
-  content: string
   createdAt?: Date | string
   updatedAt?: Date | string
   recipe: Prisma.RecipeCreateNestedOneWithoutLikesInput
-  author: Prisma.UserCreateNestedOneWithoutLikesInput
+  user: Prisma.UserCreateNestedOneWithoutLikesInput
 }
 
 export type LikeUncheckedCreateInput = {
   id?: string
-  content: string
   recipeId: string
   userId: string
   createdAt?: Date | string
@@ -264,16 +250,14 @@ export type LikeUncheckedCreateInput = {
 
 export type LikeUpdateInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
-  content?: Prisma.StringFieldUpdateOperationsInput | string
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   recipe?: Prisma.RecipeUpdateOneRequiredWithoutLikesNestedInput
-  author?: Prisma.UserUpdateOneRequiredWithoutLikesNestedInput
+  user?: Prisma.UserUpdateOneRequiredWithoutLikesNestedInput
 }
 
 export type LikeUncheckedUpdateInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
-  content?: Prisma.StringFieldUpdateOperationsInput | string
   recipeId?: Prisma.StringFieldUpdateOperationsInput | string
   userId?: Prisma.StringFieldUpdateOperationsInput | string
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
@@ -282,7 +266,6 @@ export type LikeUncheckedUpdateInput = {
 
 export type LikeCreateManyInput = {
   id?: string
-  content: string
   recipeId: string
   userId: string
   createdAt?: Date | string
@@ -291,14 +274,12 @@ export type LikeCreateManyInput = {
 
 export type LikeUpdateManyMutationInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
-  content?: Prisma.StringFieldUpdateOperationsInput | string
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
 }
 
 export type LikeUncheckedUpdateManyInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
-  content?: Prisma.StringFieldUpdateOperationsInput | string
   recipeId?: Prisma.StringFieldUpdateOperationsInput | string
   userId?: Prisma.StringFieldUpdateOperationsInput | string
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
@@ -312,7 +293,6 @@ export type LikeRecipeIdUserIdCompoundUniqueInput = {
 
 export type LikeCountOrderByAggregateInput = {
   id?: Prisma.SortOrder
-  content?: Prisma.SortOrder
   recipeId?: Prisma.SortOrder
   userId?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
@@ -321,7 +301,6 @@ export type LikeCountOrderByAggregateInput = {
 
 export type LikeMaxOrderByAggregateInput = {
   id?: Prisma.SortOrder
-  content?: Prisma.SortOrder
   recipeId?: Prisma.SortOrder
   userId?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
@@ -330,7 +309,6 @@ export type LikeMaxOrderByAggregateInput = {
 
 export type LikeMinOrderByAggregateInput = {
   id?: Prisma.SortOrder
-  content?: Prisma.SortOrder
   recipeId?: Prisma.SortOrder
   userId?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
@@ -389,59 +367,57 @@ export type LikeUncheckedUpdateManyWithoutRecipeNestedInput = {
   deleteMany?: Prisma.LikeScalarWhereInput | Prisma.LikeScalarWhereInput[]
 }
 
-export type LikeCreateNestedManyWithoutAuthorInput = {
-  create?: Prisma.XOR<Prisma.LikeCreateWithoutAuthorInput, Prisma.LikeUncheckedCreateWithoutAuthorInput> | Prisma.LikeCreateWithoutAuthorInput[] | Prisma.LikeUncheckedCreateWithoutAuthorInput[]
-  connectOrCreate?: Prisma.LikeCreateOrConnectWithoutAuthorInput | Prisma.LikeCreateOrConnectWithoutAuthorInput[]
-  createMany?: Prisma.LikeCreateManyAuthorInputEnvelope
+export type LikeCreateNestedManyWithoutUserInput = {
+  create?: Prisma.XOR<Prisma.LikeCreateWithoutUserInput, Prisma.LikeUncheckedCreateWithoutUserInput> | Prisma.LikeCreateWithoutUserInput[] | Prisma.LikeUncheckedCreateWithoutUserInput[]
+  connectOrCreate?: Prisma.LikeCreateOrConnectWithoutUserInput | Prisma.LikeCreateOrConnectWithoutUserInput[]
+  createMany?: Prisma.LikeCreateManyUserInputEnvelope
   connect?: Prisma.LikeWhereUniqueInput | Prisma.LikeWhereUniqueInput[]
 }
 
-export type LikeUncheckedCreateNestedManyWithoutAuthorInput = {
-  create?: Prisma.XOR<Prisma.LikeCreateWithoutAuthorInput, Prisma.LikeUncheckedCreateWithoutAuthorInput> | Prisma.LikeCreateWithoutAuthorInput[] | Prisma.LikeUncheckedCreateWithoutAuthorInput[]
-  connectOrCreate?: Prisma.LikeCreateOrConnectWithoutAuthorInput | Prisma.LikeCreateOrConnectWithoutAuthorInput[]
-  createMany?: Prisma.LikeCreateManyAuthorInputEnvelope
+export type LikeUncheckedCreateNestedManyWithoutUserInput = {
+  create?: Prisma.XOR<Prisma.LikeCreateWithoutUserInput, Prisma.LikeUncheckedCreateWithoutUserInput> | Prisma.LikeCreateWithoutUserInput[] | Prisma.LikeUncheckedCreateWithoutUserInput[]
+  connectOrCreate?: Prisma.LikeCreateOrConnectWithoutUserInput | Prisma.LikeCreateOrConnectWithoutUserInput[]
+  createMany?: Prisma.LikeCreateManyUserInputEnvelope
   connect?: Prisma.LikeWhereUniqueInput | Prisma.LikeWhereUniqueInput[]
 }
 
-export type LikeUpdateManyWithoutAuthorNestedInput = {
-  create?: Prisma.XOR<Prisma.LikeCreateWithoutAuthorInput, Prisma.LikeUncheckedCreateWithoutAuthorInput> | Prisma.LikeCreateWithoutAuthorInput[] | Prisma.LikeUncheckedCreateWithoutAuthorInput[]
-  connectOrCreate?: Prisma.LikeCreateOrConnectWithoutAuthorInput | Prisma.LikeCreateOrConnectWithoutAuthorInput[]
-  upsert?: Prisma.LikeUpsertWithWhereUniqueWithoutAuthorInput | Prisma.LikeUpsertWithWhereUniqueWithoutAuthorInput[]
-  createMany?: Prisma.LikeCreateManyAuthorInputEnvelope
+export type LikeUpdateManyWithoutUserNestedInput = {
+  create?: Prisma.XOR<Prisma.LikeCreateWithoutUserInput, Prisma.LikeUncheckedCreateWithoutUserInput> | Prisma.LikeCreateWithoutUserInput[] | Prisma.LikeUncheckedCreateWithoutUserInput[]
+  connectOrCreate?: Prisma.LikeCreateOrConnectWithoutUserInput | Prisma.LikeCreateOrConnectWithoutUserInput[]
+  upsert?: Prisma.LikeUpsertWithWhereUniqueWithoutUserInput | Prisma.LikeUpsertWithWhereUniqueWithoutUserInput[]
+  createMany?: Prisma.LikeCreateManyUserInputEnvelope
   set?: Prisma.LikeWhereUniqueInput | Prisma.LikeWhereUniqueInput[]
   disconnect?: Prisma.LikeWhereUniqueInput | Prisma.LikeWhereUniqueInput[]
   delete?: Prisma.LikeWhereUniqueInput | Prisma.LikeWhereUniqueInput[]
   connect?: Prisma.LikeWhereUniqueInput | Prisma.LikeWhereUniqueInput[]
-  update?: Prisma.LikeUpdateWithWhereUniqueWithoutAuthorInput | Prisma.LikeUpdateWithWhereUniqueWithoutAuthorInput[]
-  updateMany?: Prisma.LikeUpdateManyWithWhereWithoutAuthorInput | Prisma.LikeUpdateManyWithWhereWithoutAuthorInput[]
+  update?: Prisma.LikeUpdateWithWhereUniqueWithoutUserInput | Prisma.LikeUpdateWithWhereUniqueWithoutUserInput[]
+  updateMany?: Prisma.LikeUpdateManyWithWhereWithoutUserInput | Prisma.LikeUpdateManyWithWhereWithoutUserInput[]
   deleteMany?: Prisma.LikeScalarWhereInput | Prisma.LikeScalarWhereInput[]
 }
 
-export type LikeUncheckedUpdateManyWithoutAuthorNestedInput = {
-  create?: Prisma.XOR<Prisma.LikeCreateWithoutAuthorInput, Prisma.LikeUncheckedCreateWithoutAuthorInput> | Prisma.LikeCreateWithoutAuthorInput[] | Prisma.LikeUncheckedCreateWithoutAuthorInput[]
-  connectOrCreate?: Prisma.LikeCreateOrConnectWithoutAuthorInput | Prisma.LikeCreateOrConnectWithoutAuthorInput[]
-  upsert?: Prisma.LikeUpsertWithWhereUniqueWithoutAuthorInput | Prisma.LikeUpsertWithWhereUniqueWithoutAuthorInput[]
-  createMany?: Prisma.LikeCreateManyAuthorInputEnvelope
+export type LikeUncheckedUpdateManyWithoutUserNestedInput = {
+  create?: Prisma.XOR<Prisma.LikeCreateWithoutUserInput, Prisma.LikeUncheckedCreateWithoutUserInput> | Prisma.LikeCreateWithoutUserInput[] | Prisma.LikeUncheckedCreateWithoutUserInput[]
+  connectOrCreate?: Prisma.LikeCreateOrConnectWithoutUserInput | Prisma.LikeCreateOrConnectWithoutUserInput[]
+  upsert?: Prisma.LikeUpsertWithWhereUniqueWithoutUserInput | Prisma.LikeUpsertWithWhereUniqueWithoutUserInput[]
+  createMany?: Prisma.LikeCreateManyUserInputEnvelope
   set?: Prisma.LikeWhereUniqueInput | Prisma.LikeWhereUniqueInput[]
   disconnect?: Prisma.LikeWhereUniqueInput | Prisma.LikeWhereUniqueInput[]
   delete?: Prisma.LikeWhereUniqueInput | Prisma.LikeWhereUniqueInput[]
   connect?: Prisma.LikeWhereUniqueInput | Prisma.LikeWhereUniqueInput[]
-  update?: Prisma.LikeUpdateWithWhereUniqueWithoutAuthorInput | Prisma.LikeUpdateWithWhereUniqueWithoutAuthorInput[]
-  updateMany?: Prisma.LikeUpdateManyWithWhereWithoutAuthorInput | Prisma.LikeUpdateManyWithWhereWithoutAuthorInput[]
+  update?: Prisma.LikeUpdateWithWhereUniqueWithoutUserInput | Prisma.LikeUpdateWithWhereUniqueWithoutUserInput[]
+  updateMany?: Prisma.LikeUpdateManyWithWhereWithoutUserInput | Prisma.LikeUpdateManyWithWhereWithoutUserInput[]
   deleteMany?: Prisma.LikeScalarWhereInput | Prisma.LikeScalarWhereInput[]
 }
 
 export type LikeCreateWithoutRecipeInput = {
   id?: string
-  content: string
   createdAt?: Date | string
   updatedAt?: Date | string
-  author: Prisma.UserCreateNestedOneWithoutLikesInput
+  user: Prisma.UserCreateNestedOneWithoutLikesInput
 }
 
 export type LikeUncheckedCreateWithoutRecipeInput = {
   id?: string
-  content: string
   userId: string
   createdAt?: Date | string
   updatedAt?: Date | string
@@ -478,58 +454,54 @@ export type LikeScalarWhereInput = {
   OR?: Prisma.LikeScalarWhereInput[]
   NOT?: Prisma.LikeScalarWhereInput | Prisma.LikeScalarWhereInput[]
   id?: Prisma.StringFilter<"Like"> | string
-  content?: Prisma.StringFilter<"Like"> | string
   recipeId?: Prisma.StringFilter<"Like"> | string
   userId?: Prisma.StringFilter<"Like"> | string
   createdAt?: Prisma.DateTimeFilter<"Like"> | Date | string
   updatedAt?: Prisma.DateTimeFilter<"Like"> | Date | string
 }
 
-export type LikeCreateWithoutAuthorInput = {
+export type LikeCreateWithoutUserInput = {
   id?: string
-  content: string
   createdAt?: Date | string
   updatedAt?: Date | string
   recipe: Prisma.RecipeCreateNestedOneWithoutLikesInput
 }
 
-export type LikeUncheckedCreateWithoutAuthorInput = {
+export type LikeUncheckedCreateWithoutUserInput = {
   id?: string
-  content: string
   recipeId: string
   createdAt?: Date | string
   updatedAt?: Date | string
 }
 
-export type LikeCreateOrConnectWithoutAuthorInput = {
+export type LikeCreateOrConnectWithoutUserInput = {
   where: Prisma.LikeWhereUniqueInput
-  create: Prisma.XOR<Prisma.LikeCreateWithoutAuthorInput, Prisma.LikeUncheckedCreateWithoutAuthorInput>
+  create: Prisma.XOR<Prisma.LikeCreateWithoutUserInput, Prisma.LikeUncheckedCreateWithoutUserInput>
 }
 
-export type LikeCreateManyAuthorInputEnvelope = {
-  data: Prisma.LikeCreateManyAuthorInput | Prisma.LikeCreateManyAuthorInput[]
+export type LikeCreateManyUserInputEnvelope = {
+  data: Prisma.LikeCreateManyUserInput | Prisma.LikeCreateManyUserInput[]
   skipDuplicates?: boolean
 }
 
-export type LikeUpsertWithWhereUniqueWithoutAuthorInput = {
+export type LikeUpsertWithWhereUniqueWithoutUserInput = {
   where: Prisma.LikeWhereUniqueInput
-  update: Prisma.XOR<Prisma.LikeUpdateWithoutAuthorInput, Prisma.LikeUncheckedUpdateWithoutAuthorInput>
-  create: Prisma.XOR<Prisma.LikeCreateWithoutAuthorInput, Prisma.LikeUncheckedCreateWithoutAuthorInput>
+  update: Prisma.XOR<Prisma.LikeUpdateWithoutUserInput, Prisma.LikeUncheckedUpdateWithoutUserInput>
+  create: Prisma.XOR<Prisma.LikeCreateWithoutUserInput, Prisma.LikeUncheckedCreateWithoutUserInput>
 }
 
-export type LikeUpdateWithWhereUniqueWithoutAuthorInput = {
+export type LikeUpdateWithWhereUniqueWithoutUserInput = {
   where: Prisma.LikeWhereUniqueInput
-  data: Prisma.XOR<Prisma.LikeUpdateWithoutAuthorInput, Prisma.LikeUncheckedUpdateWithoutAuthorInput>
+  data: Prisma.XOR<Prisma.LikeUpdateWithoutUserInput, Prisma.LikeUncheckedUpdateWithoutUserInput>
 }
 
-export type LikeUpdateManyWithWhereWithoutAuthorInput = {
+export type LikeUpdateManyWithWhereWithoutUserInput = {
   where: Prisma.LikeScalarWhereInput
-  data: Prisma.XOR<Prisma.LikeUpdateManyMutationInput, Prisma.LikeUncheckedUpdateManyWithoutAuthorInput>
+  data: Prisma.XOR<Prisma.LikeUpdateManyMutationInput, Prisma.LikeUncheckedUpdateManyWithoutUserInput>
 }
 
 export type LikeCreateManyRecipeInput = {
   id?: string
-  content: string
   userId: string
   createdAt?: Date | string
   updatedAt?: Date | string
@@ -537,15 +509,13 @@ export type LikeCreateManyRecipeInput = {
 
 export type LikeUpdateWithoutRecipeInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
-  content?: Prisma.StringFieldUpdateOperationsInput | string
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  author?: Prisma.UserUpdateOneRequiredWithoutLikesNestedInput
+  user?: Prisma.UserUpdateOneRequiredWithoutLikesNestedInput
 }
 
 export type LikeUncheckedUpdateWithoutRecipeInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
-  content?: Prisma.StringFieldUpdateOperationsInput | string
   userId?: Prisma.StringFieldUpdateOperationsInput | string
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
@@ -553,39 +523,34 @@ export type LikeUncheckedUpdateWithoutRecipeInput = {
 
 export type LikeUncheckedUpdateManyWithoutRecipeInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
-  content?: Prisma.StringFieldUpdateOperationsInput | string
   userId?: Prisma.StringFieldUpdateOperationsInput | string
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
 }
 
-export type LikeCreateManyAuthorInput = {
+export type LikeCreateManyUserInput = {
   id?: string
-  content: string
   recipeId: string
   createdAt?: Date | string
   updatedAt?: Date | string
 }
 
-export type LikeUpdateWithoutAuthorInput = {
+export type LikeUpdateWithoutUserInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
-  content?: Prisma.StringFieldUpdateOperationsInput | string
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   recipe?: Prisma.RecipeUpdateOneRequiredWithoutLikesNestedInput
 }
 
-export type LikeUncheckedUpdateWithoutAuthorInput = {
+export type LikeUncheckedUpdateWithoutUserInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
-  content?: Prisma.StringFieldUpdateOperationsInput | string
   recipeId?: Prisma.StringFieldUpdateOperationsInput | string
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
 }
 
-export type LikeUncheckedUpdateManyWithoutAuthorInput = {
+export type LikeUncheckedUpdateManyWithoutUserInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
-  content?: Prisma.StringFieldUpdateOperationsInput | string
   recipeId?: Prisma.StringFieldUpdateOperationsInput | string
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
@@ -595,69 +560,64 @@ export type LikeUncheckedUpdateManyWithoutAuthorInput = {
 
 export type LikeSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
   id?: boolean
-  content?: boolean
   recipeId?: boolean
   userId?: boolean
   createdAt?: boolean
   updatedAt?: boolean
   recipe?: boolean | Prisma.RecipeDefaultArgs<ExtArgs>
-  author?: boolean | Prisma.UserDefaultArgs<ExtArgs>
+  user?: boolean | Prisma.UserDefaultArgs<ExtArgs>
 }, ExtArgs["result"]["like"]>
 
 export type LikeSelectCreateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
   id?: boolean
-  content?: boolean
   recipeId?: boolean
   userId?: boolean
   createdAt?: boolean
   updatedAt?: boolean
   recipe?: boolean | Prisma.RecipeDefaultArgs<ExtArgs>
-  author?: boolean | Prisma.UserDefaultArgs<ExtArgs>
+  user?: boolean | Prisma.UserDefaultArgs<ExtArgs>
 }, ExtArgs["result"]["like"]>
 
 export type LikeSelectUpdateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
   id?: boolean
-  content?: boolean
   recipeId?: boolean
   userId?: boolean
   createdAt?: boolean
   updatedAt?: boolean
   recipe?: boolean | Prisma.RecipeDefaultArgs<ExtArgs>
-  author?: boolean | Prisma.UserDefaultArgs<ExtArgs>
+  user?: boolean | Prisma.UserDefaultArgs<ExtArgs>
 }, ExtArgs["result"]["like"]>
 
 export type LikeSelectScalar = {
   id?: boolean
-  content?: boolean
   recipeId?: boolean
   userId?: boolean
   createdAt?: boolean
   updatedAt?: boolean
 }
 
-export type LikeOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "content" | "recipeId" | "userId" | "createdAt" | "updatedAt", ExtArgs["result"]["like"]>
+export type LikeOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "recipeId" | "userId" | "createdAt" | "updatedAt", ExtArgs["result"]["like"]>
 export type LikeInclude<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   recipe?: boolean | Prisma.RecipeDefaultArgs<ExtArgs>
-  author?: boolean | Prisma.UserDefaultArgs<ExtArgs>
+  user?: boolean | Prisma.UserDefaultArgs<ExtArgs>
 }
 export type LikeIncludeCreateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   recipe?: boolean | Prisma.RecipeDefaultArgs<ExtArgs>
-  author?: boolean | Prisma.UserDefaultArgs<ExtArgs>
+  user?: boolean | Prisma.UserDefaultArgs<ExtArgs>
 }
 export type LikeIncludeUpdateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   recipe?: boolean | Prisma.RecipeDefaultArgs<ExtArgs>
-  author?: boolean | Prisma.UserDefaultArgs<ExtArgs>
+  user?: boolean | Prisma.UserDefaultArgs<ExtArgs>
 }
 
 export type $LikePayload<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   name: "Like"
   objects: {
     recipe: Prisma.$RecipePayload<ExtArgs>
-    author: Prisma.$UserPayload<ExtArgs>
+    user: Prisma.$UserPayload<ExtArgs>
   }
   scalars: runtime.Types.Extensions.GetPayloadResult<{
     id: string
-    content: string
     recipeId: string
     userId: string
     createdAt: Date
@@ -1057,7 +1017,7 @@ readonly fields: LikeFieldRefs;
 export interface Prisma__LikeClient<T, Null = never, ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
   readonly [Symbol.toStringTag]: "PrismaPromise"
   recipe<T extends Prisma.RecipeDefaultArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.RecipeDefaultArgs<ExtArgs>>): Prisma.Prisma__RecipeClient<runtime.Types.Result.GetResult<Prisma.$RecipePayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
-  author<T extends Prisma.UserDefaultArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.UserDefaultArgs<ExtArgs>>): Prisma.Prisma__UserClient<runtime.Types.Result.GetResult<Prisma.$UserPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
+  user<T extends Prisma.UserDefaultArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.UserDefaultArgs<ExtArgs>>): Prisma.Prisma__UserClient<runtime.Types.Result.GetResult<Prisma.$UserPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
   /**
    * Attaches callbacks for the resolution and/or rejection of the Promise.
    * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -1088,7 +1048,6 @@ export interface Prisma__LikeClient<T, Null = never, ExtArgs extends runtime.Typ
  */
 export interface LikeFieldRefs {
   readonly id: Prisma.FieldRef<"Like", 'String'>
-  readonly content: Prisma.FieldRef<"Like", 'String'>
   readonly recipeId: Prisma.FieldRef<"Like", 'String'>
   readonly userId: Prisma.FieldRef<"Like", 'String'>
   readonly createdAt: Prisma.FieldRef<"Like", 'DateTime'>

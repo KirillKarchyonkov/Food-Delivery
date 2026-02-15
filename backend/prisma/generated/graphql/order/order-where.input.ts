@@ -24,7 +24,7 @@ export class OrderWhereInput {
     orderId?: StringFilter;
 
     @Field(() => EnumOrderStatusFilter, {nullable:true})
-    stsatus?: EnumOrderStatusFilter;
+    status?: EnumOrderStatusFilter;
 
     @Field(() => StringFilter, {nullable:true})
     userId?: StringFilter;

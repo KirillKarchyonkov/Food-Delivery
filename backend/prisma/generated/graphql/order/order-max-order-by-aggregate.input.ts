@@ -12,7 +12,7 @@ export class OrderMaxOrderByAggregateInput {
     orderId?: `${SortOrder}`;
 
     @Field(() => SortOrder, {nullable:true})
-    stsatus?: `${SortOrder}`;
+    status?: `${SortOrder}`;
 
     @Field(() => SortOrder, {nullable:true})
     userId?: `${SortOrder}`;

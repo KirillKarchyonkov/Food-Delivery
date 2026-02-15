@@ -1,6 +1,7 @@
 import { Injectable, NotFoundException } from '@nestjs/common';
 import { PrismaService } from 'src/prisma/prisma.service';
-import { IngredientCreateInput } from './inputs/create-ingredient.input';
+import type { IngredientCreateInput } from './inputs/create-ingredient.input';
+
 
 @Injectable()
 export class IngredientsService {
@@ -25,7 +26,7 @@ export class IngredientsService {
 
     create(data: IngredientCreateInput) {
         return this.prisma.ingredient.create({
-            data,
+            data
         });
     }
 

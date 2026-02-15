@@ -14,7 +14,7 @@ export class Order {
     orderId!: string;
 
     @Field(() => OrderStatus, {defaultValue:'PENDING',nullable:false})
-    stsatus!: `${OrderStatus}`;
+    status!: `${OrderStatus}`;
 
     @Field(() => String, {nullable:false})
     userId!: string;

@@ -12,7 +12,7 @@ export class OrderUncheckedUpdateInput {
     orderId?: string;
 
     @Field(() => OrderStatus, {nullable:true})
-    stsatus?: `${OrderStatus}`;
+    status?: `${OrderStatus}`;
 
     @Field(() => String, {nullable:true})
     userId?: string;

@@ -20,7 +20,7 @@ CREATE TYPE "NutritionGoal" AS ENUM ('WEIGHT_LOSS', 'MAINTAINANCE', 'MUSCLE_GAIN
 CREATE TABLE "orders" (
     "id" TEXT NOT NULL,
     "order_id" TEXT NOT NULL,
-    "stsatus" "OrderStatus" NOT NULL DEFAULT 'PENDING',
+    "status" "OrderStatus" NOT NULL DEFAULT 'PENDING',
     "user_id" TEXT NOT NULL,
     "createdAt" TIMESTAMP(3) NOT NULL DEFAULT CURRENT_TIMESTAMP,
     "updatedAt" TIMESTAMP(3) NOT NULL,
