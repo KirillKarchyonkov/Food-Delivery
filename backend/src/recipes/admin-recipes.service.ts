@@ -26,7 +26,7 @@ export class AdminRecipesService {
     create(authorId: string, {
         recipeSteps,
         nutritionFact,
-        ingredientIds,
+        ingredients,
         tags,
         ...data }: RecipeCreateInput) {
 
@@ -44,11 +44,12 @@ export class AdminRecipesService {
                 recipeSteps: {
                     create: recipeSteps
                 },
-                ...(!!ingredientIds?.length && {
+                ...(!!ingredients?.length && {
                     recipeIngredients: {
-                        create: ingredientIds.map((ingredientId, index) => ({
-                            ingredientId,
-                            quantity: 1,
+                        create: ingredients.map((item, index) => ({
+                            ingredientId: item.ingredientId,
+                            quantity: item.quantity,
+                            unit: item.unit,
                             order: index + 1
                         }))
 
@@ -73,7 +74,7 @@ export class AdminRecipesService {
         {
             recipeSteps,
             nutritionFact,
-            ingredientIds,
+            ingredients,
             tags,
             ...data }: RecipeCreateInput) {
 
@@ -99,12 +100,13 @@ export class AdminRecipesService {
                         }))
                     }
                 }),
-                ...(ingredientIds && {
+                ...(ingredients && {
                     recipeIngredients: {
                         deleteMany: {},
-                        create: ingredientIds.map((ingredientId, index) => ({
-                            ingredientId,
-                            quantity: 1,
+                        create: ingredients.map((item, index) => ({
+                            ingredientId: item.ingredientId,
+                            quantity: item.quantity,
+                            unit: item.unit,
                             order: index + 1
                         }))
 
