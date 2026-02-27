@@ -9,6 +9,7 @@ import { useForm } from "react-hook-form"
 import { isEmailRegex } from "../utils/is-email.regex"
 import { cn } from "@/shared/utils"
 import toast from "react-hot-toast"
+import Image from 'next/image';
 
 interface Props {
   type: 'login' | 'register'
@@ -58,10 +59,10 @@ export function AuthForm({ type }: Props) {
 
   return (
     <div className="flex h-screen">
-      <div className="m-auto w-sm rounded-lg bg-linear-to-tr from-[#8062ee] to-[#a088fc] p-5 text-white shadow-lg">
-        <h1 className="text-center font-semibold text-4xl mb-5 "
+      <div className="m-auto w-sm rounded-lg bg-linear-to-tr from-[#8062ee] to-[#a088fc] p-10 text-white shadow-lg relative">
+        <h1 className="text-center font-bold text-[2.3rem] mb-5 "
         >
-          {isLogin ? 'Login' : 'Register'}
+          {isLogin ? 'Sign In' : 'Sign Up'}
         </h1>
 
         <form
@@ -78,12 +79,13 @@ export function AuthForm({ type }: Props) {
               }
             })}
             type="email"
-            placeholder="Enter email:"
+            placeholder="Enter email"
             className={cn('border border-transparent transition-colors', errors.email && 'text-red-500')}
+            aria-invalid={!!errors.email}
           />
 
           {errors.email && (
-            <p className="text-sm text-red-500" >
+            <p className="text-xs text-destuctive block mt-1" >
               {errors.email.message}
             </p>
           )}
@@ -97,13 +99,13 @@ export function AuthForm({ type }: Props) {
               }
             })}
             type="password"
-            placeholder="Password"
+            placeholder="Enter password"
             className={cn('border border-transparent transition-colors', errors.password && 'text-red-500')}
-
+            aria-invalid={!!errors.password}
           />
 
           {errors.password && (
-            <p className="text-sm text-red-500" >
+            <p className="text-xs text-destuctive block mt-1" >
               {errors.password.message}
             </p>
           )}
@@ -124,7 +126,16 @@ export function AuthForm({ type }: Props) {
           isLogin={isLogin}
         />
 
-      </div>
+        <Image
+          src="/images/emotions/salad.png"
+          alt='Salad'
+          width={200}
+          height={200}
+          className="absolute -left-16 -bottom-16 -rotate-12"
+          draggable={false}
+        />
+
+      </div>x
     </div>
   )
 }
