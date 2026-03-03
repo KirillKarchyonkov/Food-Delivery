@@ -23,7 +23,8 @@
     "@/shared/lib/(.*)$",
     "@/shared/utils/(.*)$",
     "@/shared/api/(.*)$",
-    "@/__generated__/(.*)$"
+    "@/__generated__/(.*)$",
+    "^[./]"
   ],
   "importOrderSeparation": true,
   "importOrderSortSpecifiers": true,

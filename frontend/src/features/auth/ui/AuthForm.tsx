@@ -60,7 +60,7 @@ export function AuthForm({ type }: Props) {
   return (
     <div className="flex h-screen">
       <div className="m-auto w-sm rounded-lg bg-linear-to-tr from-[#8062ee] to-[#a088fc] p-10 text-white shadow-lg relative">
-        <h1 className="text-center font-bold text-[2.3rem] mb-5 "
+        <h1 className="text-center font-bold text-[2.3rem] mb-5"
         >
           {isLogin ? 'Sign In' : 'Sign Up'}
         </h1>
@@ -80,12 +80,12 @@ export function AuthForm({ type }: Props) {
             })}
             type="email"
             placeholder="Enter email"
-            className={cn('border border-transparent transition-colors', errors.email && 'text-red-500')}
+            className={cn('border border-transparent transition-colors')}
             aria-invalid={!!errors.email}
           />
 
           {errors.email && (
-            <p className="text-xs text-destuctive block mt-1" >
+            <p className="text-xs text-destructive block mt-1" >
               {errors.email.message}
             </p>
           )}
@@ -100,12 +100,12 @@ export function AuthForm({ type }: Props) {
             })}
             type="password"
             placeholder="Enter password"
-            className={cn('border border-transparent transition-colors', errors.password && 'text-red-500')}
+            className={cn('border border-transparent transition-colors')}
             aria-invalid={!!errors.password}
           />
 
           {errors.password && (
-            <p className="text-xs text-destuctive block mt-1" >
+            <p className="text-xs  text-destructive block mt-1" >
               {errors.password.message}
             </p>
           )}
