@@ -7,24 +7,24 @@ import { RecipeIngredientModel } from 'src/recipes/models/recipe-ingredient.mode
 @ObjectType()
 export class OrderItemModel {
 
-    @Field(() => ID, {nullable:false})
+    @Field(() => ID)
     id!: string;
 
     @Field(() => Int, {defaultValue:1,nullable:true})
     quantity!: number | null;
 
-    @Field(() => String, {nullable:false})
+    @Field(() => String)
     price!: string;
 
-    @Field(() => String, {nullable:false})
+    @Field(() => String)
     recipeIngredientId!: string;
 
-    @Field(() => Date, {nullable:false})
+    @Field(() => Date)
     createdAt!: Date;
 
-    @Field(() => Date, {nullable:false})
+    @Field(() => Date)
     updatedAt!: Date;
 
-    @Field(() => RecipeIngredientModel, {nullable:false})
-    recipeIngredient?: RecipeIngredientModel;
+    @Field(() => RecipeIngredientModel)
+    recipeIngredient!: RecipeIngredientModel;
 }

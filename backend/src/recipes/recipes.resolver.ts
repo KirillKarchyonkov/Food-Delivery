@@ -1,12 +1,12 @@
 import { Args, Mutation, Query, Resolver } from '@nestjs/graphql';
 import { RecipesService } from './recipes.service';
-import { Role } from 'prisma/generated/graphql/prisma';
 import { Auth } from 'src/auth/decorators/auth.decorator';
 import { AdminRecipesService } from './admin-recipes.service';
 import { RecipeModel } from './models/recipe.model';
-import type { RecipeCreateInput } from './inputs/recipe.input';
+import { RecipeCreateInput } from './inputs/recipe.input';
 import { CurrentUser } from 'src/auth/decorators/current-user.decorator';
-import type { RecipesQueryInput } from './inputs/get-recipes-query.input';
+import { RecipesQueryInput } from './inputs/get-recipes-query.input';
+import { Role } from 'prisma/generated/enums';
 
 @Resolver()
 export class RecipesResolver {
@@ -34,7 +34,7 @@ export class RecipesResolver {
     }
 
    @Query(() => [RecipeModel], {
-      name: 'admin-recipes',
+      name: 'adminRecipes',
     })
     @Auth(Role.ADMIN)
     getAllAdmin() {

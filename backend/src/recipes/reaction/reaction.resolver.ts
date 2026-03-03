@@ -2,10 +2,10 @@ import { Args, Mutation, Resolver } from '@nestjs/graphql';
 import { ReactionService } from './reaction.service';
 import { CommentModel } from './models/comment.model';
 import { CurrentUser } from 'src/auth/decorators/current-user.decorator';
-import type { CommentCreateInput, CommentUpdateInput } from './inputs/comment.input';
+import { CommentCreateInput, CommentUpdateInput } from './inputs/comment.input';
 import { Auth } from 'src/auth/decorators/auth.decorator';
-import type { Role } from 'prisma/generated/prisma/enums';
 import { ToggleLikeResponse } from './models/toggle-like.response';
+import { Role } from 'prisma/generated/enums';
 
 @Resolver()
 export class ReactionResolver {

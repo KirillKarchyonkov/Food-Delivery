@@ -1,6 +1,4 @@
 import { Field, InputType } from '@nestjs/graphql';
-import { Decimal } from '@prisma/client/runtime/client';
-import { Unit } from 'prisma/generated/graphql/prisma';
 
 @InputType()
 export class IngredientCreateInput {
@@ -8,15 +6,12 @@ export class IngredientCreateInput {
     @Field(() => String, {nullable:false})
     name!: string;
 
-    @Field(() => String, {nullable:false})
+    @Field(() => String)
     iconUrl!: string;
 
-    @Field(() => String, {nullable:false})
+    @Field(() => String)
     content!: string;
 
-    @Field(() => Decimal, {nullable:false})
+    @Field(() => Number)
     price!: number;
-
-    @Field(() => Unit, { nullable: true })
-    defaultUnit?: `${Unit}`;
 }

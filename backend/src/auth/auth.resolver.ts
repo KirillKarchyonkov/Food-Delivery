@@ -28,7 +28,7 @@ export class AuthResolver {
         @Args('data') input: AuthInput,
         @Context() { res }: IGqlContext
     ) {
-        const { refreshToken, ...response } = await this.authService.login(input);
+        const { refreshToken, ...response } = await this.authService.register(input);
 
         this.authService.toggleRefreshTokenCookie(res, refreshToken);
 

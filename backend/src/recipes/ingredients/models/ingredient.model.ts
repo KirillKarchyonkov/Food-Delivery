@@ -1,6 +1,5 @@
 import { Field, ID, ObjectType } from '@nestjs/graphql';
-import { Unit } from 'prisma/generated/graphql/prisma';
-
+import { Unit } from 'src/recipes/recipe.enum';
 
 @ObjectType()
 export class IngredientModel {

@@ -5,16 +5,16 @@ model User {
     password String
     role     Role   @default(USER)
 
-    createdAt DateTime @default(now()) @map("created_at")
-    updatedAt DateTime @updatedAt @map("updated_at")
-
     profile      Profile?
     measurements BodyMeasurement?
+
+    createdAt DateTime @default(now()) @map("created_at")
+    updatedAt DateTime @updatedAt @map("updated_at")
 
     recipes  Recipe[]
     comments Comment[]
     likes    Like[]
-    orders  Order[]
+    orders   Order[]
 
     @@map("users")
 }
@@ -50,7 +50,7 @@ model BodyMeasurement {
     armCm   Int? @map("arm_cm")
 
     activityLevel ActivityLevel?
-    natritionGoal  NutritionGoal?
+    natritionGoal NutritionGoal?
 
     user   User   @relation(fields: [userId], references: [id])
     userId String @unique @map("user_id")

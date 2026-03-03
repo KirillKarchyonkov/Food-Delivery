@@ -1,22 +1,20 @@
 import { Field } from '@nestjs/graphql';
 import { InputType } from '@nestjs/graphql';
-import { BodyMeasurementUpdateWithoutUserInput } from 'prisma/generated/graphql/body-measurement';
-import { ProfileUpdateWithoutUserInput } from 'prisma/generated/graphql/profile';
-
+import { ProfileUpdateInput } from './profile.input';
+import { BodyMeasurementUpdateInput } from './body-measurement.input';
 
 @InputType()
-export class UserUpdateInput {
+export class UserUpdateCustomInput {
 
-    @Field(() => String, {nullable:true})
+    @Field(() => String, { nullable: true })
     email?: string;
 
-    @Field(() => String, {nullable:true})
+    @Field(() => String, { nullable: true })
     password?: string;
 
-    @Field(() => ProfileUpdateWithoutUserInput, {nullable:true})
-    profile?: ProfileUpdateWithoutUserInput;
+    @Field(() => ProfileUpdateInput, { nullable: true })
+    profile?: ProfileUpdateInput;
 
-    @Field(() => BodyMeasurementUpdateWithoutUserInput, {nullable:true})
-    measurements?: BodyMeasurementUpdateWithoutUserInput;
-
+    @Field(() => BodyMeasurementUpdateInput, { nullable: true })
+    measurements?: BodyMeasurementUpdateInput;
 }

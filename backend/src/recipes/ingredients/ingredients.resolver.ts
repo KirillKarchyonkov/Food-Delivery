@@ -2,7 +2,7 @@ import { Args, Mutation, Query, Resolver } from '@nestjs/graphql';
 import { IngredientsService } from './ingredients.service';
 import { Auth } from 'src/auth/decorators/auth.decorator';
 import { IngredientModel } from './models/ingredient.model';
-import { Role } from 'prisma/generated/prisma/enums';
+import { Role } from 'prisma/generated/enums';
 import { IngredientCreateInput } from './inputs/create-ingredient.input';
 
 @Resolver()

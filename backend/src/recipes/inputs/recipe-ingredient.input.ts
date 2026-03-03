@@ -1,5 +1,5 @@
 import { Field, ID, InputType } from '@nestjs/graphql';
-import { Unit } from 'prisma/generated/prisma/enums';
+import { Unit } from '../recipe.enum';
 
 @InputType()
 export class RecipeIngredientInput {

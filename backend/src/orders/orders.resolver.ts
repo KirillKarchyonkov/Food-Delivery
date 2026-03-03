@@ -3,7 +3,7 @@ import { Args, Query, Resolver } from '@nestjs/graphql';
 import { OrdersService } from './orders.service';
 import { Auth } from 'src/auth/decorators/auth.decorator';
 import { OrderModel } from './models/order.model';
-import type { OrderCreateInput } from './inputs/order.input';
+import { OrderCreateInput } from './inputs/order.input';
 
 @Resolver()
 export class OrdersResolver {

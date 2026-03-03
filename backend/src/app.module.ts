@@ -24,8 +24,8 @@ import { getCraftGraphQConfig } from './config/graphql.config';
     AuthModule, 
     UsersModule, 
     RecipesModule, 
-    OrdersModule, 
-    PrismaModule
+    PrismaModule,
+    OrdersModule
   ],
   controllers: [AppController],
   providers: [AppService],
