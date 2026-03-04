@@ -1,9 +1,9 @@
 'use client'
 
-import { LoginDocument, RegisterDocument, type AuthInput } from "@/__generated__/graphql"
+import { LoginDocument, MeDocument, RegisterDocument, type AuthInput, type LoginMutation, type LoginMutationVariables, type RegisterMutation, type RegisterMutationVariables } from "@/__generated__/graphql"
 import { Button } from "@/shared/components/ui/button"
 import { Input } from "@/shared/components/ui/input"
-import { useMutation } from "@apollo/client/react"
+import { useApolloClient, useMutation } from "@apollo/client/react"
 import AuthChangeTypeForm from "./AuthChangeTypeForm"
 import { useForm } from "react-hook-form"
 import { isEmailRegex } from "../utils/is-email.regex"
@@ -31,21 +31,34 @@ export function AuthForm({ type }: Props) {
       }
     })
 
-  const [auth, { loading, error, }] = useMutation(
-    isLogin ? LoginDocument : RegisterDocument, {
+  const client = useApolloClient()
 
-    onCompleted: () => {
-      toast.success(isLogin ? 'Logged in successfully!' : 'Registered successfully', {
-        id: 'auth-success'
-      })
-    },
-    onError: (error) => {
-      toast.error(error.message, {
-        id: 'auth-error'
-      })
+  const [auth, { loading, error, }] = useMutation<LoginMutation | RegisterMutation, LoginMutationVariables | RegisterMutationVariables>(
+    isLogin ? LoginDocument : RegisterDocument,
+    {
+
+      onCompleted: data => {
+
+        const authData = 'login' in data ? data.login : data?.register
+
+        client.writeQuery({
+          query: MeDocument,
+          data: {
+            me: authData.user
+          }
+        })
+
+        toast.success(isLogin ? 'Logged in successfully!' : 'Registered successfully', {
+          id: 'auth-success'
+        })
+      },
+      onError: (error) => {
+        toast.error(error.message, {
+          id: 'auth-error'
+        })
+      }
+
     }
-
-  }
   )
 
   const handleAuth = (data: AuthInput) => {

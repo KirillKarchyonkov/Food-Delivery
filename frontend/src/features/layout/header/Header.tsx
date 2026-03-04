@@ -7,8 +7,12 @@ import { PAGES } from "@/shared/config/page.config";
 import { Bell, Headset } from "lucide-react";
 import { Button } from "@/shared/components/ui/button";
 import { UserInfo } from "@/shared/components/custom-ui/user-info/UserInfo";
+import { useAuth } from "@/features/auth/hooks/useAuth";
 
 export function Header() {
+
+    const { user } = useAuth()
+
     return <header className="flex items-center justify-between p-5">
         <div className="flex items-center gap-8">
             <Link
@@ -40,8 +44,8 @@ export function Header() {
 
             <UserInfo
                 avatarUrl="https://avatars.githubusercontent.com/u/12345699?v=4"
-                name="Jessica"
-                email="jesshamm@gmail.com"
+                name={"Anonymous"}
+                email={user?.email || ""}
             />
         </div>
     </header>;
