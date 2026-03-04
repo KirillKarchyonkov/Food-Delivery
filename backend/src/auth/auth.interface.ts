@@ -13,8 +13,5 @@ export type TCurrentUser = Omit<UserModel, 'password'>
 export class AuthResponse {
     @Field(() => UserModel)
     user: UserModel;
-
-    @Field()
-    accessToken: string;
 }
 

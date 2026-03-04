@@ -16,9 +16,10 @@ export class AuthResolver {
         @Args('data') input: AuthInput,
         @Context() { res }: IGqlContext
     ) {
-        const { refreshToken, ...response } = await this.authService.login(input);
+        const { refreshToken, accessToken, ...response } = await this.authService.login(input);
 
-        this.authService.toggleRefreshTokenCookie(res, refreshToken);
+        this.authService.toggleAccessTokenCookie(res, accessToken)
+        this.authService.toggleRefreshTokenCookie(res, refreshToken)
 
         return response
     }
@@ -28,9 +29,10 @@ export class AuthResolver {
         @Args('data') input: AuthInput,
         @Context() { res }: IGqlContext
     ) {
-        const { refreshToken, ...response } = await this.authService.register(input);
+        const { refreshToken, accessToken, ...response } = await this.authService.register(input);
 
-        this.authService.toggleRefreshTokenCookie(res, refreshToken);
+        this.authService.toggleAccessTokenCookie(res, accessToken)
+        this.authService.toggleRefreshTokenCookie(res, refreshToken)
 
         return response
     }
@@ -40,12 +42,14 @@ export class AuthResolver {
         const initialRefreshToken = req.cookies?.[this.authService.REFRESH_TOKEN_NAME];
 
         if (!initialRefreshToken) {
+            this.authService.toggleAccessTokenCookie(res, null)
             this.authService.toggleRefreshTokenCookie(res, null)
             throw new BadRequestException('Refresh токен отсутствует');
         }
 
-        const { refreshToken, ...response } = await this.authService.getNewTokens(initialRefreshToken)
+        const { accessToken, refreshToken, ...response } = await this.authService.getNewTokens(initialRefreshToken)
 
+        this.authService.toggleAccessTokenCookie(res, accessToken)
         this.authService.toggleRefreshTokenCookie(res, refreshToken)
 
         return response
@@ -55,12 +59,12 @@ export class AuthResolver {
     logout(@Context() { res, req }: IGqlContext) {
         const initialRefreshToken = req.cookies?.[this.authService.REFRESH_TOKEN_NAME];
 
+        this.authService.toggleAccessTokenCookie(res, null)
+        this.authService.toggleRefreshTokenCookie(res, null)
+
         if (!initialRefreshToken) {
-            this.authService.toggleRefreshTokenCookie(res, null)
             throw new BadRequestException('Refresh токен отсутствует');
         }
-
-        this.authService.toggleRefreshTokenCookie(res, null)
 
         return true
     }
