@@ -6,8 +6,7 @@ export const httpLink = new HttpLink({
     credentials: "include",
     fetchOptions: {
         next: {
-            revalidate: 60,
-            
+            revalidate: 60,  
         }
     }
 });

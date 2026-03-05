@@ -9,6 +9,9 @@ const apollo = getApolloClient();
 export function Provider({ children }: { children: React.ReactNode }) {
     return <ApolloProvider client={apollo}>
         {children}
-        <Toaster position="top-center"/>
-        </ApolloProvider>;
+        <Toaster
+            position="top-center"
+            containerClassName="mt-16 font-mono text-sm"
+        />
+    </ApolloProvider>;
 }

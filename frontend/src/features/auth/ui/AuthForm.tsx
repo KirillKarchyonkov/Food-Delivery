@@ -10,6 +10,8 @@ import { isEmailRegex } from "../utils/is-email.regex"
 import { cn } from "@/shared/utils"
 import toast from "react-hot-toast"
 import Image from 'next/image';
+import { useRouter } from "next/navigation"
+import { PAGES } from "@/shared/config/page.config"
 
 interface Props {
   type: 'login' | 'register'
@@ -18,6 +20,8 @@ interface Props {
 export function AuthForm({ type }: Props) {
 
   const isLogin = type === 'login'
+
+  const router = useRouter()
 
   const { register,
     handleSubmit,
@@ -51,6 +55,8 @@ export function AuthForm({ type }: Props) {
         toast.success(isLogin ? 'Logged in successfully!' : 'Registered successfully', {
           id: 'auth-success'
         })
+
+        router.replace(PAGES.DASHBOARD)
       },
       onError: (error) => {
         toast.error(error.message, {

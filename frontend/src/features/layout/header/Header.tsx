@@ -8,6 +8,7 @@ import { Bell, Headset } from "lucide-react";
 import { Button } from "@/shared/components/ui/button";
 import { UserInfo } from "@/shared/components/custom-ui/user-info/UserInfo";
 import { useAuth } from "@/features/auth/hooks/useAuth";
+import { Logout } from "../../auth/ui/logout";
 
 export function Header() {
 
@@ -35,18 +36,22 @@ export function Header() {
 
             <Button
                 variant="soft"
-                className="mr-6 rounded-full"
+                className="mr-2 rounded-full"
                 size="icon"
 
             >
                 <Bell className="size-5" />
             </Button>
 
+            <Logout />
+
             <UserInfo
                 avatarUrl="https://avatars.githubusercontent.com/u/12345699?v=4"
                 name={"Anonymous"}
                 email={user?.email || ""}
             />
+
+
         </div>
     </header>;
 }
