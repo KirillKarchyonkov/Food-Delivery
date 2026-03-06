@@ -4,6 +4,7 @@ import { AuthResponse } from './auth.interface';
 import { AuthService } from './auth.service';
 import { Args, Context, Mutation, Query, Resolver } from "@nestjs/graphql";
 import { BadRequestException } from '@nestjs/common';
+import { VerifyCaptcha } from './decorators/captcha.decorator';
 
 @Resolver()
 export class AuthResolver {
@@ -12,6 +13,7 @@ export class AuthResolver {
     ) { }
 
     @Mutation(() => AuthResponse)
+    @VerifyCaptcha()
     async login(
         @Args('data') input: AuthInput,
         @Context() { res }: IGqlContext
@@ -23,8 +25,8 @@ export class AuthResolver {
 
         return response
     }
-
     @Mutation(() => AuthResponse)
+    @VerifyCaptcha()
     async register(
         @Args('data') input: AuthInput,
         @Context() { res }: IGqlContext

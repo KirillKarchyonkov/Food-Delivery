@@ -10,6 +10,10 @@ import { ConfigModule, ConfigService } from '@nestjs/config';
 import { GraphQLModule } from '@nestjs/graphql';
 import { ApolloDriver, ApolloDriverConfig } from '@nestjs/apollo';
 import { getCraftGraphQConfig } from './config/graphql.config';
+import { TurnstileModule } from "nest-cloudflare-turnstile";
+import { ResendModule } from "nestjs-resend";
+import { getTurnstileConfig } from './config/turnstile.config';
+import { EmailModule } from './email/email.module';
 
 @Module({
   imports: [
@@ -21,11 +25,24 @@ import { getCraftGraphQConfig } from './config/graphql.config';
       inject: [ConfigService],
 
     }),
+    TurnstileModule.forRootAsync({
+      imports: [ConfigModule],
+      useFactory: getTurnstileConfig,
+      inject: [ConfigService]
+    }),
+    ResendModule.forRootAsync({
+      imports: [ConfigModule],
+      useFactory: (configService: ConfigService) => ({
+        apiKey: configService.getOrThrow<string>('RESEND_API_KEY')
+      }),
+      inject: [ConfigService]
+    }),
     AuthModule, 
     UsersModule, 
     RecipesModule, 
     PrismaModule,
-    OrdersModule
+    OrdersModule,
+    EmailModule
   ],
   controllers: [AppController],
   providers: [AppService],
